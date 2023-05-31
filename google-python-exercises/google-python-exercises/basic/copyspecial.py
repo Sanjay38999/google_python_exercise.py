@@ -24,7 +24,7 @@ def get_special_paths(dirname):
   result = []
   paths = os.listdir(dirname)  # list of paths in that dir
   for fname in paths:
-    match = re.search(r'__(\w+)__', fname)
+    match = re.search(r'_(\w+)_', fname)
     if match:
       result.append(os.path.abspath(os.path.join(dirname, fname)))
 
@@ -41,10 +41,10 @@ def copy_to(paths, to_dir):
     # could error out if already exists os.path.exists():
 
 
-def zip_to(paths, zipfile):
+def zip_to(zipfile, todir):
   """Zip up all of the given files into a new zip file with the given name."""
-  print("welcom")
-  cmd = 'tar.exe -a -c -f ' + zipfile + ' ' + ' '.join(paths)
+  print("welcome")
+  cmd = 'tar.exe -a -c -f '+ os.path.join(todir, 'output.tar ') + ' ' + zipfile
   print ("Command I'm going to do:" + cmd)
   (status, output) = subprocess.getstatusoutput(cmd)
   # If command had a problem (status is non-zero),
@@ -97,7 +97,7 @@ def main():
   if todir:
     copy_to(paths, todir)
   if tozip:
-    zip_to(paths, tozip)
+    zip_to(tozip, todir)
   else:
     print ('\n'.join(paths))
 
