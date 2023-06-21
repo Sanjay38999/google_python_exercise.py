@@ -18,7 +18,6 @@ import subprocess
 # +++your code here+++
 # Write functions and modify main() to call them
 
-# LAB(begin solution)
 def get_special_paths(dirname):
   """Given a dirname, returns a list of all its special files."""
   result = []
@@ -53,7 +52,6 @@ def zip_to(zipfile, todir):
     sys.stderr.write(output)
     sys.exit(1)
 
-# LAB(end solution)
 
 
 def main():
